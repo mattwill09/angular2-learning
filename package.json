@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "QuickStart package.json from the documentation, supplemented with testing support",
   "scripts": {
-    "start": "tsc && concurrently \"tsc -w\" \"lite-server\" ",
+    "start": "tsc && node-sass app/ --output app/ && concurrently \"tsc -w\"  \"lite-server\" \"node-sass -w app/ --output app/\" ",
     "e2e": "tsc && concurrently \"http-server -s\" \"protractor protractor.config.js\" --kill-others --success first",
     "lint": "tslint ./app/**/*.ts -t verbose",
     "lite": "lite-server",
@@ -11,7 +11,9 @@
     "test": "tsc && concurrently \"tsc -w\" \"karma start karma.conf.js\"",
     "test-once": "tsc && karma start karma.conf.js --single-run",
     "tsc": "tsc",
-    "tsc:w": "tsc -w"
+    "tsc:w": "tsc -w",
+    "sass": "node-sass app/ --output app/",
+    "sass:w" : "node-sass -w app/ --output app/"
   },
   "keywords": [],
   "author": "",
@@ -50,6 +52,7 @@
     "karma-jasmine-html-reporter": "^0.2.2",
     "protractor": "~4.0.14",
     "rimraf": "^2.5.4",
+    "node-sass": "~4.1.1",
 
     "@types/node": "^6.0.46",
     "@types/jasmine": "^2.5.36"
