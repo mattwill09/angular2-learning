@@ -2,6 +2,10 @@ import {
   Component
 } from '@angular/core';
 
+import {
+  MediaItem
+} from './MediaItem';
+
 @Component({
   selector: 'mw-app',
   templateUrl: 'app/app.component.html',
@@ -19,7 +23,7 @@ export class AppComponent {
     isFavorite: false
   };
 
-  onMediaItemDelete(mediaItem) {
+  onMediaItemDelete(mediaItem: MediaItem) {
     console.log(mediaItem);
   };
 }
