@@ -34,12 +34,12 @@ export class MediaItemFormComponent {
         }
 
         let year = parseInt(control.value, 10);
-        let minYear = 1900;
+        let minYear = 1875;
         let maxYear = 2017;
         if (year >= minYear && year <= maxYear) {
            return null;
         }
 
-        return {'year': true};
+        return {'year': {min: minYear, max: maxYear}};
     }
 } 
