@@ -17,7 +17,7 @@ export class MediaItemListComponent {
   mediaItems: MediaItem[] = [{
     id: 1,
     name: 'Firebug',
-    medium: 'series',
+    medium: 'Series',
     category: 'test',
     year: 2010,
     watchedOn: 1294166565384,
