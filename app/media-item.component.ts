@@ -8,4 +8,8 @@ import {
   styleUrls: ['app/media-item.component.css']
 })
 
-export class MediaItemComponent {}
+export class MediaItemComponent {
+    onDelete() {
+        console.log('deleting item');
+    }
+}
