@@ -4,6 +4,7 @@ import {
   Output,
   EventEmitter
 } from '@angular/core';
+
 import {
   MediaItem
 } from './MediaItem';
