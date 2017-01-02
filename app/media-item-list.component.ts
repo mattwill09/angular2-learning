@@ -1,10 +1,6 @@
-import {
-  Component
-} from '@angular/core';
+import { Component } from '@angular/core';
 
-import {
-  MediaItem
-} from './MediaItem';
+import { MediaItem } from './MediaItem';
 
 @Component({
   selector: 'mw-media-item-list',
