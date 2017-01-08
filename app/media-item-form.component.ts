@@ -33,7 +33,8 @@ export class MediaItemFormComponent {
     }
 
     onSubmit(mediaItem: MediaItem) {
-        this.mediaItemService.add(mediaItem);
+        this.mediaItemService.add(mediaItem)
+            .subscribe();
     }
 
     yearValidator(control: FormControl) {

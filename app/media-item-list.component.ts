@@ -10,15 +10,27 @@ import { MediaItemService } from './media-item.service';
 })
 
 export class MediaItemListComponent {
-  mediaItems: MediaItem[];
+  mediaItems: MediaItem[] = [];
+  medium: string = '';
 
   constructor(private mediaItemService: MediaItemService) {}
 
   ngOnInit() {
-    this.mediaItems = this.mediaItemService.get();
+    this.getMediaItems(this.medium);
   }
 
   onMediaItemDelete(mediaItem: MediaItem) {
-    this.mediaItemService.delete(mediaItem);
+    this.mediaItemService.delete(mediaItem)
+      .subscribe(() => {
+        this.getMediaItems(this.medium);
+      });
+  }
+
+  getMediaItems(medium: string) {
+    this.medium = medium;
+    this.mediaItemService.get(this.medium)
+    .subscribe(mediaItems => {
+      this.mediaItems = mediaItems;
+    });
   }
 };

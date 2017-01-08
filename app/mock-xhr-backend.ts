@@ -3,6 +3,7 @@ import { Observable } from 'rxjs/Observable';
 import { Observer } from 'rxjs/Observer';
 
 import { MediaItem } from './MediaItem';
+
 export class MockXHRBackend {
   private _mediaItems: MediaItem[] = [{
     id: 1,
@@ -49,7 +50,7 @@ export class MockXHRBackend {
 
   createConnection(request: Request) {
     let response = new Observable((responseObserver: Observer < Response > ) => {
-      var responseData;
+      // let responseData;
       let responseOptions: ResponseOptions;
       switch (request.method) {
         case RequestMethod.Get:
@@ -122,7 +123,7 @@ export class MockXHRBackend {
     }
   }
 
-  private _getNewId() {
+  private _getNewId(): number {
     if (this._mediaItems.length > 0) {
       return Math.max.apply(Math, this._mediaItems.map(item => item.id)) + 1;
     }
