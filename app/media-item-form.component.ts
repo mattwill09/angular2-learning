@@ -1,5 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { MediaItem } from './MediaItem';
 import { MediaItemService } from './media-item.service';
@@ -18,7 +19,8 @@ export class MediaItemFormComponent {
     constructor(
         private formBuilder: FormBuilder,
         private mediaItemService: MediaItemService,
-        @Inject(lookupListToken) public lookupLists: any) { }
+        @Inject(lookupListToken) public lookupLists: any,
+        private router: Router) { }
 
     ngOnInit() {
         this.form = this.formBuilder.group( {
@@ -34,7 +36,9 @@ export class MediaItemFormComponent {
 
     onSubmit(mediaItem: MediaItem) {
         this.mediaItemService.add(mediaItem)
-            .subscribe();
+            .subscribe(() => {
+                this.router.navigate(['/', mediaItem.medium]);
+            });
     }
 
     yearValidator(control: FormControl) {
