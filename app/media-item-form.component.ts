@@ -4,6 +4,8 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 import { MediaItem } from './MediaItem';
 import { MediaItemService } from './media-item.service';
 
+import { lookupListToken }  from './providers';
+
 @Component({
     selector: 'mw-media-item-form',
     templateUrl: 'app/media-item-form.component.html',
@@ -16,12 +18,12 @@ export class MediaItemFormComponent {
     constructor(
         private formBuilder: FormBuilder,
         private mediaItemService: MediaItemService,
-        @Inject('lookupListToken') public lookupLists: any) { }
+        @Inject(lookupListToken) public lookupLists: any) { }
 
     ngOnInit() {
         this.form = this.formBuilder.group( {
             medium: this.formBuilder.control('Movies'),
-            name: this.formBuilder.control('',Validators.compose([
+            name: this.formBuilder.control('', Validators.compose([
                 Validators.pattern('[\\w\\-\\s\\/]+'),
                 Validators.required
             ])),
@@ -48,4 +50,4 @@ export class MediaItemFormComponent {
 
         return {'year': {min: minYear, max: maxYear}};
     }
-} 
+}
