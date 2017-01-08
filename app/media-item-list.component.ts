@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 import { MediaItem } from './MediaItem';
+import { MediaItemService } from './media-item.service';
 
 @Component({
   selector: 'mw-media-item-list',
@@ -9,52 +10,15 @@ import { MediaItem } from './MediaItem';
 })
 
 export class MediaItemListComponent {
+  mediaItems: MediaItem[];
 
-  mediaItems: MediaItem[] = [{
-    id: 1,
-    name: 'Firebug',
-    medium: 'Series',
-    category: 'Science Fiction',
-    year: 2010,
-    watchedOn: 1294166565384,
-    isFavorite: false
-  }, {
-    id: 2,
-    name: 'The Small Tall',
-    medium: 'Movies',
-    category: 'Comedy',
-    year: 2015,
-    watchedOn: null,
-    isFavorite: true
-  }, {
-    id: 3,
-    name: 'The Redemption',
-    medium: 'Movies',
-    category: 'Action',
-    year: 2016,
-    watchedOn: null,
-    isFavorite: false
-  }, {
-    id: 4,
-    name: 'Hoopers',
-    medium: 'Series',
-    category: 'Drama',
-    year: null,
-    watchedOn: null,
-    isFavorite: true
-  }, {
-    id: 5,
-    name: 'Happy Joe: Cheery Road',
-    medium: 'Movies',
-    category: 'Action',
-    year: 2015,
-    watchedOn: 1457166565384,
-    isFavorite: false
-  }];
+  constructor(private mediaItemService: MediaItemService) {}
 
-  onMediaItemDelete(mediaItem: MediaItem) {
-    console.log(mediaItem);
+  ngOnInit() {
+    this.mediaItems = this.mediaItemService.get();
   }
 
-
+  onMediaItemDelete(mediaItem: MediaItem) {
+    this.mediaItemService.delete(mediaItem);
+  }
 };
